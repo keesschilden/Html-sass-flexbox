@@ -73,3 +73,6 @@ body {
 .hotel-view {
   background-color: #fff;
   flex: 1; }
+
+svg {
+  height: 20px; }
