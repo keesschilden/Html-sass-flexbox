@@ -82,18 +82,22 @@
 
   & > * {
     height: 100%;
-    padding: 0 2rem;
     cursor: pointer;
+  }
 
-    &:hover {
-      background-color: var(--color-gray-light-2);
-    }
+  .user-nav-hover:hover {
+    background-color: var(--color-gray-light-2);
+  }
+
+  &:not(:last-child) {
+    padding: 0 2rem;
   }
 
   &__icon-box {
     display: flex;
     align-items: center;
     position: relative;
+    padding: 0 2rem;
   }
 
   &__icon {
@@ -121,6 +125,7 @@
   &__user {
     display: flex;
     align-items: center;
+    padding: 0 2rem;
   }
 
   &__user-photo {
@@ -135,20 +140,183 @@
 
 //////////////////////////////////////////////////
 
-//PROFILE POPUP
+//CHAT POPUP LOOKS
+
+.user-nav {
+  position: relative;
+
+  &__chat {
+    height: 100%;
+  }
+
+  &__popup-wrapper {
+    visibility: hidden;
+    width: 0;
+    z-index: 15;
+    font-size: 1.3rem;
+
+    position: absolute;
+    top: 8rem;
+    right: 12.4859rem;
+    padding: 0rem;
+
+    cursor: default;
+    color: var(--color-gray-light-3);
+    background-color: var(--color-gray-dark-1);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+
+    height: 0rem;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.46, 0.15, 0.27, 1.29);
+  }
+
+  &__header {
+    display: flex;
+    //  padding: 1rem 2rem;
+    align-items: center;
+
+    justify-content: space-between;
+  }
+
+  &__dots {
+    font-size: 2.5rem;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  &-titel {
+    display: flex;
+  }
+
+  &__svg {
+    height: 3rem;
+    width: 3rem;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  .search-bar__popup {
+    margin-top: 2rem;
+    color: #000000;
+
+    &:hover {
+      animation: pulsate 1s infinite;
+      box-shadow: none !important;
+    }
+
+    &:active {
+      animation: none;
+    }
+  }
+
+  &__content {
+  }
+
+  &__message-container {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+
+    &:not(:first-child) {
+      margin-top: 3rem;
+    }
+
+    &:hover {
+      background-color: (var(--color-gray-dark-2));
+      cursor: pointer;
+    }
+  }
+
+  &__people-container {
+    margin-right: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__profile {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  &__message {
+    width: 100%;
+
+    &-titel {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    &-amount,
+    &-time {
+      color: var(--color-gray-dark-3);
+    }
+
+    &-amount {
+      margin: 0rem 0rem 0rem 1rem;
+      margin-right: auto;
+    }
+
+    &-time {
+    }
+
+    &-content {
+      padding: 0;
+    }
+  }
+
+  &__pen {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+//////////////////////////////////////////////////
+
+//CHAT FUNTIONALITY
+
+.toggle-popup {
+  display: none;
+}
+
+.toggle-popup:checked + .user-nav__popup-wrapper {
+  visibility: visible;
+  height: 40rem;
+  padding: 3rem;
+  width: 40rem;
+}
+
+//////////////////////////////////////////////////
+
+//PROFILE POPUP LOOKS
 
 .user-settings {
-  z-index: 10;
-  display: block;
+  visibility: hidden;
 
-  // background-color: rgb(54, 54, 54);
-  background-color: #fff;
   position: absolute;
   top: 7rem;
   right: 0;
   width: 15rem;
-  height: 25rem;
+  height: 0;
+  // height: 25rem;
+  overflow: hidden;
+
+  // background-color: rgb(54, 54, 54);
+  background-color: #fff;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  //  transform: scaleY(0);
+
+  transition: all 0.5s ease-out;
 
   &__options {
     display: flex;
@@ -158,6 +326,15 @@
     height: 5rem;
     padding: 1rem 1rem;
     color: var(--color-gray-dark-2);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(#000000, 0.2);
+    }
+
+    &:active {
+      background-color: rgba(#000000, 0.3);
+    }
   }
 
   &__icon {
@@ -172,6 +349,20 @@
   &__options:not(:last-child) {
     border-bottom: 1px solid var(--color-gray-light-2);
   }
+}
+
+//////////////////////////////////////////////////
+
+//PROFILE POPUP FUNCTIONALITY
+
+.toggle-popup {
+  display: none;
+}
+
+.toggle-popup:checked + .user-settings {
+  visibility: visible;
+  //  transform: scaleY(1);
+  height: 25rem;
 }
 
 //////////////////////////////////////////////////

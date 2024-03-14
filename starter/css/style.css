@@ -187,14 +187,16 @@ body {
   align-self: stretch; }
   .user-nav > * {
     height: 100%;
-    padding: 0 2rem;
     cursor: pointer; }
-    .user-nav > *:hover {
-      background-color: var(--color-gray-light-2); }
+  .user-nav .user-nav-hover:hover {
+    background-color: var(--color-gray-light-2); }
+  .user-nav:not(:last-child) {
+    padding: 0 2rem; }
   .user-nav__icon-box {
     display: flex;
     align-items: center;
-    position: relative; }
+    position: relative;
+    padding: 0 2rem; }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;
@@ -214,22 +216,113 @@ body {
     right: 1.1rem; }
   .user-nav__user {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    padding: 0 2rem; }
   .user-nav__user-photo {
     height: 3.75rem;
     border-radius: 50%;
     margin-right: 1rem; }
 
+.user-nav {
+  position: relative; }
+  .user-nav__chat {
+    height: 100%; }
+  .user-nav__popup-wrapper {
+    visibility: hidden;
+    width: 0;
+    z-index: 15;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 8rem;
+    right: 12.4859rem;
+    padding: 0rem;
+    cursor: default;
+    color: var(--color-gray-light-3);
+    background-color: var(--color-gray-dark-1);
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    height: 0rem;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.46, 0.15, 0.27, 1.29); }
+  .user-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .user-nav__dots {
+    font-size: 2.5rem; }
+    .user-nav__dots:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+  .user-nav-titel {
+    display: flex; }
+  .user-nav__svg {
+    height: 3rem;
+    width: 3rem; }
+    .user-nav__svg:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+  .user-nav .search-bar__popup {
+    margin-top: 2rem;
+    color: #000000; }
+    .user-nav .search-bar__popup:hover {
+      animation: pulsate 1s infinite;
+      box-shadow: none !important; }
+    .user-nav .search-bar__popup:active {
+      animation: none; }
+  .user-nav__message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .user-nav__message-container:not(:last-child) {
+      margin-bottom: 3rem; }
+    .user-nav__message-container:not(:first-child) {
+      margin-top: 3rem; }
+    .user-nav__message-container:hover {
+      background-color: var(--color-gray-dark-2);
+      cursor: pointer; }
+  .user-nav__people-container {
+    margin-right: 2rem;
+    justify-content: center;
+    align-items: center; }
+  .user-nav__profile {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%; }
+  .user-nav__message {
+    width: 100%; }
+    .user-nav__message-titel {
+      display: flex;
+      margin-bottom: 1.5rem; }
+    .user-nav__message-amount, .user-nav__message-time {
+      color: var(--color-gray-dark-3); }
+    .user-nav__message-amount {
+      margin: 0rem 0rem 0rem 1rem;
+      margin-right: auto; }
+    .user-nav__message-content {
+      padding: 0; }
+  .user-nav__pen {
+    width: 5rem;
+    height: 5rem; }
+
+.toggle-popup {
+  display: none; }
+
+.toggle-popup:checked + .user-nav__popup-wrapper {
+  visibility: visible;
+  height: 40rem;
+  padding: 3rem;
+  width: 40rem; }
+
 .user-settings {
-  z-index: 10;
-  display: block;
-  background-color: #fff;
+  visibility: hidden;
   position: absolute;
   top: 7rem;
   right: 0;
   width: 15rem;
-  height: 25rem;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+  height: 0;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease-out; }
   .user-settings__options {
     display: flex;
     flex: 1;
@@ -237,13 +330,25 @@ body {
     justify-content: start;
     height: 5rem;
     padding: 1rem 1rem;
-    color: var(--color-gray-dark-2); }
+    color: var(--color-gray-dark-2);
+    transition: background-color 0.3s; }
+    .user-settings__options:hover {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .user-settings__options:active {
+      background-color: rgba(0, 0, 0, 0.3); }
   .user-settings__icon {
     height: 3rem;
     width: 3rem;
     margin-right: 2rem; }
   .user-settings__options:not(:last-child) {
     border-bottom: 1px solid var(--color-gray-light-2); }
+
+.toggle-popup {
+  display: none; }
+
+.toggle-popup:checked + .user-settings {
+  visibility: visible;
+  height: 25rem; }
 
 .side-nav {
   font-size: 1.4rem;
